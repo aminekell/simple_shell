@@ -8,9 +8,9 @@ char *read_line(void)
     /* قراءة سطر من المستخدم */
      if (getline(&line, &buf_size, stdin) == EOF) 
     {
-	printf("\n");
+      printf("\n");
       free(line);
-        exit(EXIT_FAILURE);
+      exit(EXIT_FAILURE);
     }
     return line;
 }

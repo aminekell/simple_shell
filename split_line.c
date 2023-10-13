@@ -12,9 +12,9 @@ char **split_line(char *line)
     if (!tokens)
     {
         fprintf(stderr, "Allocation error\n");
-	free(line);
         exit(EXIT_FAILURE);
     }
+
     token = strtok(line, TOK_DELIM);
     while (token != NULL)
     {
@@ -27,11 +27,11 @@ char **split_line(char *line)
             tokens = realloc(tokens, bufsize * sizeof(char *));
             if (!tokens)
             {
-    		    fprintf(stderr, "Allocation error\n");
-		    free(line);
-                    exit(EXIT_FAILURE);
+                fprintf(stderr, "Allocation error\n");
+                exit(EXIT_FAILURE);
             }
         }
+
         token = strtok(NULL, TOK_DELIM);
     }
     tokens[position] = NULL;

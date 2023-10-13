@@ -12,12 +12,9 @@ int main() {
     line = read_line();
     args = split_line(line);
     status = execute(args);
-
-    free(line);
+      free(line);
     free(args);
   } while (status);
  
-
   return 0;
 }
-
