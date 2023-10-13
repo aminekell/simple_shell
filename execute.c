@@ -3,7 +3,7 @@
 int execute(char **args)
 {
     if (args[0] == NULL)
-    {
+   {
         return 1;
     }
 
@@ -27,6 +27,7 @@ int launch(char **args)
         if (execvp(args[0], args) == -1)
         {
             perror("shell");
+	    free(args);
         }
         exit(EXIT_FAILURE);
     }
@@ -39,9 +40,8 @@ int launch(char **args)
         do
         {
             pid = waitpid(pid, &status, WUNTRACED);
+	     
         } while (!WIFEXITED(status) && !WIFSIGNALED(status));
     }
-
     return 1;
 }
-
