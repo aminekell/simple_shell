@@ -1,7 +1,6 @@
 #include "shell.h"
-#include <string.h>
-#include <stdlib.h>
 char **tokenizer(char *line) {
+    char *_strdup (const char *str);
     char *token = NULL, *tmp = NULL;
     char **command = NULL;
     int cpt = 0, i = 0;
