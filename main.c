@@ -25,7 +25,7 @@ int main(int ac, char **av)
 
         command = tokenizer(line);
         if (!command)
-            continue;
+              continue;
         status = _execute(command, av);
     }
 

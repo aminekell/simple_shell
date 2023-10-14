@@ -9,7 +9,12 @@ char **tokenizer(char *line)
         return (NULL);
     tmp = strdup(line);
     token = strtok(tmp, DELIM);
-
+    if (token == NULL)
+    {
+         free(line), line = NULL;
+          free(tmp), tmp = NULL;
+          return NULL;
+    }
     while (token)
     {
         cpt++;
