@@ -1,23 +1,29 @@
 #include "shell.h"
-
-int main() {
-
-  char *line;
-  char **args;
-  int status;
-
-  do {
- if (isatty (STDIN_FILENO))
-     write(STDOUT_FILENO, "$ ", 2);
-    line = read_line();
-    args = split_line(line);
-    status = execute(args);
-
-    free(line);
-    free(args);
-  } while (status);
+/**
+* main - Simple Shell main function
+* @ac: Count of argumnents
+* @av: Arguments
+* Return: Always (success).
+*/  
+int main (int ac, char **argv) 
+{
+char *line = NULL, **command = NULL;
+int  status = 0;
+(void) ac;
+while (1)
+{
+line = read_line ();
+if (line == NULL)	/* reache EOF ctr + D */
+{
+        if (isatty(STDIN_FILENO))
+                    write(STDOUT_FILENO, "\n", 1);
+  	return (status);
+}
+command = tokenizer(line);
+if (!command)
+      continue;
+status = _execute(command, argv);
  
-
-  return 0;
+}
 }
 

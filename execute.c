@@ -1,47 +1,31 @@
 #include "shell.h"
-
-int execute(char **args)
+int _execute (char **command, char **argv) 
 {
-    if (args[0] == NULL)
-    {
-        return 1;
+int i;
+pid_t child;
+int status;
+child = fork ();
+if (child == 0)
+{  
+    if (execve (command[0], command, environ) == -1)
+    { 
+        perror (argv[0]);
+        for (i = 0; command[i]; i++)
+	{
+		free (command[i]), command[i] = NULL;
+	}
+	free (command), command = NULL;
+        exit (0);
     }
-
-    if (strcmp(args[0], "exit") == 0)
-    {
-        return 0;
-    }
-
-    return launch(args);
 }
-
-int launch(char **args)
+else
 {
-    pid_t pid;
-    int status;
-
-    pid = fork();
-    if (pid == 0)
-    {
-        /* In the child process */
-        if (execvp(args[0], args) == -1)
+    waitpid (child, &status, 0);
+        for (i = 0; command[i]; i++)
         {
-            perror("shell");
+               free (command[i]), command[i] = NULL;
         }
-        exit(EXIT_FAILURE);
-    }
-    else if (pid < 0)
-    {
-        perror("shell");
-    }
-    else
-    {
-        do
-        {
-            pid = waitpid(pid, &status, WUNTRACED);
-        } while (!WIFEXITED(status) && !WIFSIGNALED(status));
-    }
-
-    return 1;
+        free (command), command = NULL;
 }
-
+return (WEXITSTATUS(status));
+}

@@ -1,16 +1,20 @@
-#ifndef SHELL_H
-#define SHELL_H
-
-#include <stdio.h>
+#ifndef shell_h
+#define shell_h
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
+#include <errno.h>
+#include <fcntl.h>
+#define DELIM " \t\n"
+ 
+extern char **environ;
 
 char *read_line(void);
-char **split_line(char *line);
-int execute(char **args);
-int launch(char **args);
-
+char **tokenizer(char *line);
+int _execute(char **command, char **argv);
 #endif
+
