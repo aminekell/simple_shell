@@ -1,5 +1,10 @@
 #include "shell.h"
-
+/**
+* main - Simple Shell main function
+* @ac: Count of argumnents
+* @av: Arguments
+* Return: Always (success).
+*/  
 int main(int ac, char **av)
 {
     char *line = NULL, **command = NULL;
@@ -23,4 +28,7 @@ int main(int ac, char **av)
             continue;
         status = _execute(command, av);
     }
+
 }
+
+
