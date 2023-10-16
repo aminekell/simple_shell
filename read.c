@@ -4,7 +4,7 @@
 * custom_read_line - function read the prompt
 *
 * Return: return custom_line or NULL.
-*/ 
+*/
 char *custom_read_line(void)
 {
 	char *custom_line = NULL;

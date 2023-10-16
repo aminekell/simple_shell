@@ -4,7 +4,7 @@
 * @ac: Count of argumnents
 * @av: Arguments
 * Return: Always (success).
-*/ 
+*/
 int main(int ac, char **av)
 {
 	char *line = NULL, **alternative_command = NULL;
