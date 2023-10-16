@@ -18,6 +18,10 @@ char *custom_read_line(void)
 	free(custom_line);
 	return (NULL);
 	}
-
+	if (strcmp(custom_line, "exit\n") == 0)
+	{
+	free(custom_line);
+	exit(0);
+	}
 	return (custom_line);
 }
