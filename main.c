@@ -5,7 +5,7 @@
 * @av: Arguments
 * Return: Always (success).
 */
-int main(int ac, char **av)
+int main(void)
 {
 	char *line = NULL, **alternative_command = NULL;
 	int alternative_status = 0;
