@@ -20,7 +20,6 @@ my_token = strtok(temp, DELIM);
 if (my_token == NULL)
 {
 /* Free memory and return NULL if no tokens found */
-free(input_line);
 input_line = NULL;
 free(temp);
 temp = NULL;
@@ -34,7 +33,6 @@ temp = NULL;
 command_array = malloc(sizeof(char *) * (count + 1));
 if (!command_array)
 {
-free(input_line);
 input_line = NULL;
 return (NULL); }
 my_token = strtok(input_line, DELIM);
@@ -43,7 +41,6 @@ while (my_token)
 command_array[index] = strdup(my_token);
 my_token = strtok(NULL, DELIM);
 index++; }
-free(input_line);
 input_line = NULL;
 command_array[index] = NULL;
 return (command_array); }
