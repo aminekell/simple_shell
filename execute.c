@@ -16,7 +16,7 @@ int execute_alternative(char **commands, char **arguments)
 	{
 		if (execve(commands[0], commands, environ) == -1)
 		{
-			perror(arguments[index]);
+			perror(arguments[0]);
 			for (index = 0; commands[index]; index++)
 			{
 				free(commands[index]), commands[index] = NULL;

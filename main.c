@@ -31,44 +31,15 @@ int main(void) {
             free(line);
             continue;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- if (strcmp(alternative_command[0],"exit") == 0) {
-            free(line);
-            free(original_path);
-            for (i = 0; alternative_command[i] != NULL; i++) {
-                free(alternative_command[i]);
-            }
-            free(alternative_command);
-            exit(alternative_status);
-        }
-
-
+if (strcmp(alternative_command[0],"exit") == 0)
+{
+free(line);
+free(original_path);
+for (i = 0; alternative_command[i] != NULL; i++)
+{
+free(alternative_command[i]);  }
+free(alternative_command);
+exit(alternative_status);  }
 
 
 
